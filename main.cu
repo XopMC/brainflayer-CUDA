@@ -1464,7 +1464,7 @@ static const char* xor_load_failure_kind_to_string(const XorLoadFailureKind kind
     }
 }
 
-#if defined(_WIN32) || defined(_WIN64)
+#if defined(_WIN64) && !defined(__CYGWIN__) && !defined(__MINGW64__)
 static std::wstring normalize_windows_extended_path(const std::wstring& path) {
     if (path.empty()) {
         return path;
@@ -1486,7 +1486,7 @@ static std::wstring normalize_windows_extended_path(const std::wstring& path) {
 #endif
 
 static FILE* open_binary_file_utf8_for_read(const std::string& path, XorLoadDiagnostics& diag) {
-#if defined(_WIN32) || defined(_WIN64)
+#if defined(_WIN64) && !defined(__CYGWIN__) && !defined(__MINGW64__)
     FILE* file = nullptr;
     if (!path.empty()) {
         std::wstring wide_path = utf8_to_wstring(path);

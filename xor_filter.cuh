@@ -22,7 +22,7 @@
 #include <cuda_runtime.h>
 
 using namespace std;
-#define XOR_MAX_SIZE 1750000000
+#define XOR_MAX_SIZE SIZE_MAX
 
 
 
